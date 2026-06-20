@@ -511,6 +511,10 @@ MonoBehaviour:
   RotationValue: 1
   RotationDecreaseValue: 0.1
   ActualRotationValue: 0
+  FirstAngle: -115.31
+  SecondAngle: -232.22
+  ThirdAngle: 0
+  angleBetweenVectors: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
