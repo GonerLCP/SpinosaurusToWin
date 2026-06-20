@@ -15,6 +15,7 @@ public class SpinningWheel : MonoBehaviour
     public float SecondAngle;
     public float ThirdAngle;
     public float angleBetweenVectors;
+    public float angleBetweenVectorsTemp;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +25,7 @@ public class SpinningWheel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        angleBetweenVectorsTemp = AngleEn360(Vector3.up,transform.up, -Vector3.forward);
         if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
         {
             ActualRotationValue += RotationValue;
@@ -51,7 +53,7 @@ public class SpinningWheel : MonoBehaviour
         {
             ActualRotationValue = 0f;
 
-            float angleBetweenVectors = AngleEn360(transform.up, Vector3.up, -Vector3.forward);
+            float angleBetweenVectors = AngleEn360(Vector3.up, transform.up, -Vector3.forward);
             if (angleBetweenVectors < -FirstAngle)
             {
                 print("ouais le jump");
@@ -79,12 +81,19 @@ public class SpinningWheel : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        Vector3 VectorUpRefWheel = transform.up - transform.position;
         Gizmos.color = Color.orange;
-        Gizmos.DrawRay(transform.position, Quaternion.AngleAxis(FirstAngle, Vector3.forward) * VectorUpRefWheel);
-        Gizmos.color = Color.purple;
-        Gizmos.DrawRay(transform.position, Quaternion.AngleAxis(SecondAngle, Vector3.forward) * VectorUpRefWheel);
-        Gizmos.color = Color.pink;
-        Gizmos.DrawRay(transform.position, Quaternion.AngleAxis(ThirdAngle, Vector3.forward) * VectorUpRefWheel);
+        Gizmos.DrawRay(transform.position,transform.up.normalized);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(transform.position, Vector3.up * 5f);
+        //Vector3 VectorUpRefWheel = transform.up - transform.position;
+        //Gizmos.color = Color.orange;
+        //Gizmos.DrawRay(transform.position, Quaternion.AngleAxis(FirstAngle, transform.up) * VectorUpRefWheel);
+        //Gizmos.color = Color.purple;
+        //Gizmos.DrawRay(transform.position, Quaternion.AngleAxis(SecondAngle, transform.up) * VectorUpRefWheel);
+        //Gizmos.color = Color.pink;
+        //Gizmos.DrawRay(transform.position, Quaternion.AngleAxis(ThirdAngle, transform.up) * VectorUpRefWheel);
+
+
     }
     }
