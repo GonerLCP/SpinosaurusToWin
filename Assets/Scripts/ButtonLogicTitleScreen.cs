@@ -1,0 +1,33 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class ButtonLogicTitleScreen : MonoBehaviour
+{
+    public GameObject ControlsPanel;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        ControlsPanel.SetActive(false);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void Play()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void Controls()
+    {
+        ControlsPanel.SetActive(true);
+    }
+
+    public void Close()
+    {
+        ControlsPanel.SetActive(false);
+    }
+}
