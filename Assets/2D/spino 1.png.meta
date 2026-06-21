@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 963bdd6cf2e030c4fb8b01ce5e94d913
+guid: 9f21dc7ad93b4e84699da3ee41d1f20f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4559051605827878944
-    second: bg_plan1_0
+      213: -2884081474274671709
+    second: spino 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bg_plan1_0
+      name: spino 1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 475
+        x: 51
+        y: 178
+        width: 976
+        height: 590
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0208b06d741054f30800000000000000
-      internalID: 4559051605827878944
+      spriteID: 3a3c29efd2fa9f7d0800000000000000
+      internalID: -2884081474274671709
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bg_plan1_0: 4559051605827878944
+      spino 1_0: -2884081474274671709
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
