@@ -22,6 +22,8 @@ public class SpinningWheel : MonoBehaviour
     public float angleBetweenVectorsTemp;
 
     public event Action BigJumpAction;
+    public event Action SmallJumpAction;
+    public event Action AccelAction;
     public event Action ScreamingAction;
 
     public GameObject SpinoVectorUpReference;
@@ -65,19 +67,22 @@ public class SpinningWheel : MonoBehaviour
             angleBetweenVectors = AngleEn360(SpinoVectorUpReference.transform.up, transform.up, Vector3.forward);
             if (angleBetweenVectors < FirstAngle)
             {
-                print("ouais le jump");
+                print("1");
                 BigJumpAction?.Invoke();
             }
             else if (angleBetweenVectors  < SecondAngle)
             {
-                print("ouais le hurlement");
+                print("zebi ça marche");
+                AccelAction?.Invoke();
             }
             else if (angleBetweenVectors < ThirdAngle)
             {
-                print("ouais le ollie");
+                print("2");
+                SmallJumpAction?.Invoke();
             }
             else
             {
+                print("3");
                 ScreamingAction?.Invoke();
             }
 

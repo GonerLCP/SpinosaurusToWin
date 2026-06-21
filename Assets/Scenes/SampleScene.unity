@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 185782597}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.53, y: 0.52, z: 0}
+  m_LocalPosition: {x: -26.46, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -440,13 +440,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewPlayerController
   gravity: -20
-  jumpForce: 10
+  bigJumpForce: 10
+  smallJumpForce: 10
   layerMask:
     serializedVersion: 2
     m_Bits: 8
-  minSpeed: 1.5
+  minSpeed: 2
+  actualSpeed: 0
+  speedIncrease: 1
+  speedDecrease: 0.01
   spinningW: {fileID: 1300100999}
   DistanceToGround: 1.09
+  skate: {fileID: 985263992}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,6 +1100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 985263990}
   - component: {fileID: 985263991}
+  - component: {fileID: 985263992}
   m_Layer: 0
   m_Name: skate_0
   m_TagString: Untagged
@@ -1176,6 +1182,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &985263992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985263989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8105fa636a993d14982fd6dcf8b1e36c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Skate
+  Player: {fileID: 500360412}
+  spinningW: {fileID: 1300100999}
 --- !u!1 &1233722641
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,8 +1328,8 @@ Transform:
   m_GameObject: {fileID: 1233722641}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5834, y: -0.37, z: 0}
-  m_LocalScale: {x: 14.599581, y: 1, z: 1}
+  m_LocalPosition: {x: -11.4791, y: -0.37, z: 0}
+  m_LocalScale: {x: 34.390774, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
