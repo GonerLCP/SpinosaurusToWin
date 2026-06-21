@@ -23,39 +23,51 @@ public class NewPlayerController : MonoBehaviour
 
     public Skate skate;
 
+    bool fail=false;
+
+    public Sprite spriteDead;
+    public GameObject Panel;
+
     private void Start()
     {
         spinningW.BigJumpAction += SautAvecPlanche;
         spinningW.SmallJumpAction += SautSansPlanche;
         spinningW.AccelAction += Accelleration;
         actualSpeed = minSpeed;
+        Panel.SetActive(false);
     }
     void Update()
     {
         Hit2D = Physics2D.Raycast(transform.position, -Vector2.up, DistanceToGround, layerMask);
-        if (Hit2D){skate.ReparentingSkate();}
+        if (Hit2D) { skate.ReparentingSkate(); }
         verticalSpeed += gravity * Time.deltaTime;
         if (Hit2D != false && verticalSpeed < 0)
         {
             verticalSpeed = 0;
         }
 
-        if (actualSpeed > minSpeed)
+        if (!fail)
         {
-            actualSpeed -= speedDecrease;
-            if(actualSpeed < minSpeed) { actualSpeed = minSpeed; }
+            if (actualSpeed > minSpeed)
+            {
+                actualSpeed -= speedDecrease;
+                if (actualSpeed < minSpeed) { actualSpeed = minSpeed; }
+            }
+            transform.Translate(new Vector2(actualSpeed * Time.deltaTime * 5, verticalSpeed * Time.deltaTime), Space.World);
         }
-        transform.Translate(new Vector2(actualSpeed * Time.deltaTime * 5, verticalSpeed * Time.deltaTime),Space.World); 
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.purple;
-        Gizmos.DrawRay(transform.position, -Vector2.up * DistanceToGround);
+        else
+        {
+            actualSpeed -= speedDecrease / 2; if (actualSpeed <0) {actualSpeed = 0; Panel.SetActive(true); }
+            transform.Translate(new Vector2(actualSpeed * Time.deltaTime * 5, verticalSpeed * Time.deltaTime), Space.World);
+            transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = spriteDead;
+        }
+
+
     }
 
     public void SautAvecPlanche()
     {
-        if ( Hit2D != false)
+        if ( Hit2D != false && !fail)
         {
             verticalSpeed = smallJumpForce;
         }
@@ -63,7 +75,7 @@ public class NewPlayerController : MonoBehaviour
 
     public void SautSansPlanche()
     {
-        if (Hit2D != false)
+        if (Hit2D != false && !fail)
         {
             verticalSpeed = bigJumpForce;
         }
@@ -72,5 +84,19 @@ public class NewPlayerController : MonoBehaviour
     public void Accelleration()
     {
         actualSpeed += speedIncrease;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Obstacle" && this.tag == "Player")
+        {
+            fail = true;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.purple;
+        Gizmos.DrawRay(transform.position, -Vector2.up * DistanceToGround);
     }
 }

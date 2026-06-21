@@ -7,7 +7,7 @@ public class ButtonLogicTitleScreen : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        ControlsPanel.SetActive(false);
+        //ControlsPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -30,4 +30,9 @@ public class ButtonLogicTitleScreen : MonoBehaviour
     {
         ControlsPanel.SetActive(false);
     }
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
 }
