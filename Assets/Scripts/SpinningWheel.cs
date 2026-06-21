@@ -22,6 +22,7 @@ public class SpinningWheel : MonoBehaviour
     public float angleBetweenVectorsTemp;
 
     public event Action BigJumpAction;
+    public event Action ScreamingAction;
 
     public GameObject SpinoVectorUpReference;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -74,6 +75,10 @@ public class SpinningWheel : MonoBehaviour
             else if (angleBetweenVectors < ThirdAngle)
             {
                 print("ouais le ollie");
+            }
+            else
+            {
+                ScreamingAction?.Invoke();
             }
 
         }
