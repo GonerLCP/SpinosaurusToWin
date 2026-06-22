@@ -1,11 +1,22 @@
+using System;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
-
+public enum PlayerState
+{   BaseSpinoWoSkate,
+    JumpWindup,
+    DuringJump,
+    OllieWindup,
+    DuringOllie,
+    Dead,
+    Speeding,
+    Screaming
+}
 public class NewPlayerController : MonoBehaviour
 {
     public float gravity = -20f;
     public float bigJumpForce = 10f;
     public float smallJumpForce = 10f;
+    public float windupLength;
 
     private float verticalSpeed;
     public LayerMask layerMask;
@@ -24,22 +35,35 @@ public class NewPlayerController : MonoBehaviour
     public Skate skate;
 
     bool fail=false;
+    public bool skateFail = false;
 
     public Sprite spriteDead;
     public GameObject Panel;
 
+    SpriteChanger spriteChanger;
+
+    PlayerState stateOfThePlayer;
+
+    public FadeInOut fade;
     private void Start()
     {
         spinningW.BigJumpAction += SautAvecPlanche;
         spinningW.SmallJumpAction += SautSansPlanche;
         spinningW.AccelAction += Accelleration;
         actualSpeed = minSpeed;
-        Panel.SetActive(false);
+        spriteChanger = GetComponent<SpriteChanger>();
+        //Panel.SetActive(false);
     }
     void Update()
     {
         Hit2D = Physics2D.Raycast(transform.position, -Vector2.up, DistanceToGround, layerMask);
         if (Hit2D) { skate.ReparentingSkate(); }
+        if(Hit2D && skateFail == true) { fail = true; }
+        if (Hit2D && stateOfThePlayer != PlayerState.BaseSpinoWoSkate && stateOfThePlayer != PlayerState.OllieWindup && stateOfThePlayer != PlayerState.JumpWindup)
+        {
+            stateOfThePlayer = PlayerState.BaseSpinoWoSkate;
+            spriteChanger.ChangeSprite(stateOfThePlayer);
+        }
         verticalSpeed += gravity * Time.deltaTime;
         if (Hit2D != false && verticalSpeed < 0)
         {
@@ -57,7 +81,7 @@ public class NewPlayerController : MonoBehaviour
         }
         else
         {
-            actualSpeed -= speedDecrease / 2; if (actualSpeed <0) {actualSpeed = 0; Panel.SetActive(true); }
+            actualSpeed -= speedDecrease; if (actualSpeed <0) {actualSpeed = 0; fade.FadeIn(); }
             transform.Translate(new Vector2(actualSpeed * Time.deltaTime * 5, verticalSpeed * Time.deltaTime), Space.World);
             transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = spriteDead;
         }
@@ -69,7 +93,7 @@ public class NewPlayerController : MonoBehaviour
     {
         if ( Hit2D != false && !fail)
         {
-            verticalSpeed = smallJumpForce;
+            StartCoroutine(DelayBeforeJump(PlayerState.OllieWindup, PlayerState.DuringOllie, smallJumpForce));
         }
     }
 
@@ -77,7 +101,7 @@ public class NewPlayerController : MonoBehaviour
     {
         if (Hit2D != false && !fail)
         {
-            verticalSpeed = bigJumpForce;
+            StartCoroutine(DelayBeforeJump(PlayerState.JumpWindup, PlayerState.DuringJump,bigJumpForce));
         }
     }
 
@@ -94,6 +118,16 @@ public class NewPlayerController : MonoBehaviour
         }
     }
 
+    IEnumerator DelayBeforeJump(PlayerState windUpState, PlayerState JumpState, float jumpForce)
+    {
+        stateOfThePlayer = windUpState;
+        spriteChanger.ChangeSprite(windUpState);
+        yield return new WaitForSeconds(windupLength);
+        spriteChanger.ChangeSprite(JumpState);
+        verticalSpeed = bigJumpForce;
+        yield return new WaitForSeconds(0.2f);
+        stateOfThePlayer = JumpState;
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.purple;

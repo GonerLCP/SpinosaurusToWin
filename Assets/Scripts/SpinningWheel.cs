@@ -85,10 +85,15 @@ public class SpinningWheel : MonoBehaviour
                 print("3");
                 ScreamingAction?.Invoke();
             }
-
+            StartCoroutine(RespinningWheel());
         }
     }
 
+    IEnumerator RespinningWheel()
+    {
+        yield return new WaitForSeconds(0.2f);
+        ActualRotationValue += RotationValue *2* UnityEngine.Random.Range(-1, 1);
+    }
     private float AngleEn360(Vector3 from,Vector3 to, Vector3 direction)
     {
         float angleSigned = Vector3.SignedAngle(from, to, direction);

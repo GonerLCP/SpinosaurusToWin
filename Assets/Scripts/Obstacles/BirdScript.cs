@@ -1,11 +1,15 @@
 using System.Collections;
 using UnityEngine;
+using System;
+
 
 public class BirdScript : MonoBehaviour
 {
     public SpinningWheel spinningW;
     bool playerInRadius;
     bool movingBirds;
+    public event Action Scream;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

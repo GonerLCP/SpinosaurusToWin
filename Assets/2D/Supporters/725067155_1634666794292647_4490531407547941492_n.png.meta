@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 72f0ba1afdccc2646a74a903ad5c119e
+guid: 1c57f628e6bf7ee458b7e90948ffdd0e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3998657346814660296
-    second: spino jump windup_0
+      213: 8777040401110673232
+    second: 725067155_1634666794292647_4490531407547941492_n_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spino jump windup_0
+      name: 725067155_1634666794292647_4490531407547941492_n_0
       rect:
         serializedVersion: 2
-        x: 31
-        y: 178
-        width: 994
-        height: 590
+        x: 345
+        y: 169
+        width: 472
+        height: 656
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8313b90345ae188c0800000000000000
-      internalID: -3998657346814660296
+      spriteID: 0572477fdbf4ec970800000000000000
+      internalID: 8777040401110673232
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      spino jump windup_0: -3998657346814660296
+      725067155_1634666794292647_4490531407547941492_n_0: 8777040401110673232
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
