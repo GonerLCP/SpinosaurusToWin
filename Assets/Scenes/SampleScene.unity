@@ -291,7 +291,7 @@ Transform:
   m_GameObject: {fileID: 185782597}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.33, y: -26.45, z: 0}
+  m_LocalPosition: {x: -19.6, y: -26.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -792,7 +792,8 @@ MonoBehaviour:
   gravity: -35
   bigJumpForce: 17.5
   smallJumpForce: 15
-  windupLength: 0.4
+  jumpWindupLength: 0.1
+  speedingWindupLength: 0.15
   layerMask:
     serializedVersion: 2
     m_Bits: 8
@@ -805,17 +806,20 @@ MonoBehaviour:
   skate: {fileID: 985263992}
   skateFail: 0
   spriteDead: {fileID: 21300000, guid: 86421c151e3eb2346bb68b21219cac07, type: 3}
+  baseSkate: {fileID: 7687817101888686137, guid: dea77649522c85f47b27e28d9c749de8, type: 3}
+  ollieSkate: {fileID: 1956989626344474557, guid: a7c9b78f73d7b0c468ef76e14e4a6699, type: 3}
   Panel: {fileID: 1333856479}
   fade: {fileID: 1333856483}
   jumpSound:
   - {fileID: 8300000, guid: c552938751d0eda4c8cea5c7d62733f8, type: 3}
   - {fileID: 8300000, guid: e3a804b45333a9a4dbcc73a3e1155ed4, type: 3}
   - {fileID: 8300000, guid: 50054026030f6e7479da6fd5088b5945, type: 3}
-  landingSound: {fileID: 8300000, guid: 03f93d70e3bed104a99ce2e1e795485c, type: 3}
+  landingSound: {fileID: 8300000, guid: fd593533d0f7df34cb1c73e20fb465cb, type: 3}
   rolling:
   - {fileID: 8300000, guid: 16bcc1c328ebd1a4aaa0c9216eb57631, type: 3}
   - {fileID: 8300000, guid: d8c35f748d295b44689223a2743d48cf, type: 3}
   - {fileID: 8300000, guid: bce60672d5db9144397c0ae384fecdf7, type: 3}
+  deathSound: {fileID: 8300000, guid: 608bd7338b2cbf244a32db6852b44839, type: 3}
 --- !u!50 &500360420
 Rigidbody2D:
   serializedVersion: 5
@@ -897,10 +901,11 @@ MonoBehaviour:
   OllieWindup: {fileID: 21300000, guid: c727431d0af8608489b9f542a724f842, type: 3}
   DuringOllie: {fileID: 21300000, guid: 86421c151e3eb2346bb68b21219cac07, type: 3}
   Dead: {fileID: 0}
-  Scream: {fileID: 0}
-  Speeding: {fileID: 0}
-  BaseSkate: {fileID: 0}
-  SkateOllieWindup: {fileID: 0}
+  Scream: {fileID: 6497737242025207968, guid: 4fee70933cc4037469c241b7885e2c52, type: 3}
+  SpeedingWindup: {fileID: 32683682397700508, guid: 04013582ed6165e488a2f9ecd3503061, type: 3}
+  DuringSpeeding: {fileID: 8682546509865450010, guid: edcd1fdd53d2e5642becdf501751d3a4, type: 3}
+  BaseSkate: {fileID: 7687817101888686137, guid: dea77649522c85f47b27e28d9c749de8, type: 3}
+  SkateOllieWindup: {fileID: 1956989626344474557, guid: a7c9b78f73d7b0c468ef76e14e4a6699, type: 3}
   Player: {fileID: 833760304}
 --- !u!82 &500360423
 AudioSource:
@@ -914,8 +919,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_PlayOnAwake: 0
+  m_Volume: 0.257
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1972,6 +1977,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1300100998}
   - component: {fileID: 1300100999}
+  - component: {fileID: 1300101000}
   m_Layer: 0
   m_Name: Wheel
   m_TagString: Untagged
@@ -2017,8 +2023,108 @@ MonoBehaviour:
   angleBetweenVectors: 0
   angleBetweenVectorsTemp: 0
   SpinoVectorUpReference: {fileID: 833760304}
-  Scream: {fileID: 8300000, guid: 0c2e60359337b2f428ca6111c141067b, type: 3}
-  Wheel: {fileID: 8300000, guid: 6def2e416dc5eaa41bf0eb59d05d5571, type: 3}
+  screamSound: {fileID: 8300000, guid: 0c2e60359337b2f428ca6111c141067b, type: 3}
+  wheelSound: {fileID: 8300000, guid: 6def2e416dc5eaa41bf0eb59d05d5571, type: 3}
+  spriteChanger: {fileID: 500360422}
+  IsPlayerDead: 0
+  WheelCooldown: 0
+--- !u!82 &1300101000
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300100997}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 6def2e416dc5eaa41bf0eb59d05d5571, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.57
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1333856479
 GameObject:
   m_ObjectHideFlags: 0
