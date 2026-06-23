@@ -151,7 +151,6 @@ public class NewPlayerController : MonoBehaviour
             StartCoroutine(DelayBeforeJump(PlayerState.OllieWindup, PlayerState.DuringOllie, smallJumpForce));
             skate.GetComponent<SpriteRenderer>().sprite = ollieSkate;
             StartCoroutine(SlightDelayForOllie());
-            transform.position += new Vector3(0, 0.6f, 0);
         }
     }
 
