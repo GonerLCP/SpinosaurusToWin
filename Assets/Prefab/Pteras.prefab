@@ -152,3 +152,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BirdScript
   spinningW: {fileID: 0}
+  BirdScream: {fileID: 8300000, guid: b20777a114b00d340931f52043ea9600, type: 3}

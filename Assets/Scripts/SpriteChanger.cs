@@ -9,7 +9,8 @@ public class SpriteChanger : MonoBehaviour
     public Sprite DuringOllie;
     public Sprite Dead;
     public Sprite Scream;
-    public Sprite Speeding;
+    public Sprite SpeedingWindup;
+    public Sprite DuringSpeeding;
 
     public Sprite BaseSkate;
     public Sprite SkateOllieWindup;
@@ -44,8 +45,11 @@ public class SpriteChanger : MonoBehaviour
             case PlayerState.Dead:
                 PlayerSprite.sprite =Dead;
                 break;
-            case PlayerState.Speeding:
-                PlayerSprite.sprite =Speeding;
+            case PlayerState.SpeedingWindup:
+                PlayerSprite.sprite = SpeedingWindup;
+                break;
+            case PlayerState.DuringSpeeding:
+                PlayerSprite.sprite =DuringSpeeding;
                 break;
             case PlayerState.Screaming:
                 PlayerSprite.sprite = Scream;

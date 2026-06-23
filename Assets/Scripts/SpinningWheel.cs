@@ -27,10 +27,26 @@ public class SpinningWheel : MonoBehaviour
     public event Action ScreamingAction;
 
     public GameObject SpinoVectorUpReference;
+
+    public AudioClip screamSound;
+    public AudioClip wheelSound;
+
+    AudioSource WheelAudioSource;
+
+    public SpriteChanger spriteChanger;
+
+    public bool IsPlayerDead;
+    bool CdFinished;
+
+    public float WheelCooldown;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Wheeltransform = GetComponent<Transform>();
+        WheelAudioSource = GetComponent<AudioSource>();
+        WheelAudioSource.clip = wheelSound;
+        IsPlayerDead = false;
+        CdFinished = true;
     }
 
     // Update is called once per frame
@@ -60,7 +76,7 @@ public class SpinningWheel : MonoBehaviour
         }
         else {ActualRotationValue =0f; }
 
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space") && IsPlayerDead == false && CdFinished ==true)
         {
             ActualRotationValue = 0f;
 
@@ -82,10 +98,25 @@ public class SpinningWheel : MonoBehaviour
             }
             else
             {
+                SoundFXManager.Instance.PlaySoundFXClip(screamSound, transform,0.2f);
+                StartCoroutine(ScreamingChangeSprite());
                 print("3");
                 ScreamingAction?.Invoke();
             }
             StartCoroutine(RespinningWheel());
+            StartCoroutine(WheelCooldownCoroutine());
+        }
+
+        if (Mathf.Abs(ActualRotationValue) >0)
+        {
+            WheelAudioSource.mute = false;
+            float t = Mathf.Abs(ActualRotationValue) / 20;
+            t = t > 1 ? 1 : t;
+            WheelAudioSource.pitch = Mathf.Lerp(0.3f, 1.5f,t);
+        }
+        else
+        {
+            WheelAudioSource.mute = true;
         }
     }
 
@@ -93,6 +124,20 @@ public class SpinningWheel : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         ActualRotationValue += RotationValue *2* UnityEngine.Random.Range(-1, 1);
+    }
+
+    IEnumerator WheelCooldownCoroutine()
+    {
+        CdFinished = false;
+        yield return new WaitForSeconds(WheelCooldown);
+        CdFinished = true;
+    }
+
+    IEnumerator ScreamingChangeSprite()
+    {
+        spriteChanger.ChangeSprite(PlayerState.Screaming);
+        yield return new WaitForSeconds(1.5f);
+        spriteChanger.ChangeSprite(PlayerState.BaseSpinoWoSkate);
     }
     private float AngleEn360(Vector3 from,Vector3 to, Vector3 direction)
     {

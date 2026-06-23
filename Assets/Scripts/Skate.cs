@@ -50,7 +50,7 @@ public class Skate : MonoBehaviour
 
     IEnumerator WaitToLeaveTheGround()
     {
-        yield return new WaitForSeconds(Player.GetComponent<NewPlayerController>().windupLength+0.2f);
+        yield return new WaitForSeconds(Player.GetComponent<NewPlayerController>().jumpWindupLength+0.2f);
         tempEnLair = true;
     }
     private void OnTriggerEnter2D(Collider2D collision)

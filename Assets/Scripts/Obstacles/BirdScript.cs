@@ -8,11 +8,11 @@ public class BirdScript : MonoBehaviour
     public SpinningWheel spinningW;
     bool playerInRadius;
     bool movingBirds;
-    public event Action Scream;
-
+    public AudioClip BirdScream;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        spinningW = FindFirstObjectByType<SpinningWheel>();
         spinningW.ScreamingAction += CriPourLesOiseaux;
     }
 
@@ -41,6 +41,7 @@ public class BirdScript : MonoBehaviour
     {
         if (playerInRadius)
         {
+            SoundFXManager.Instance.PlaySoundFXClip(BirdScream, transform, 0.2f);
             transform.GetComponent<BoxCollider2D>().enabled = false;
             StartCoroutine(AnimationFlyingBird());
         }
