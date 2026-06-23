@@ -7,6 +7,7 @@ public class Skate : MonoBehaviour
     public GameObject Player;
     public SpinningWheel spinningW;
     bool tempEnLair;
+    public bool FailedJump;
     float YAuMomentDuSaut;
     Vector3 PositionLocale;
 
@@ -16,13 +17,14 @@ public class Skate : MonoBehaviour
         PositionLocale = transform.localPosition;
         tempEnLair = false;
         jumpingWithoutBoard = false;
+        FailedJump = false;
         spinningW.SmallJumpAction += SautSansPlanche;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (jumpingWithoutBoard)
+        if (jumpingWithoutBoard && FailedJump == false)
         {
             if (!tempEnLair) { transform.SetParent(null, true); StartCoroutine(WaitToLeaveTheGround()); }
             transform.position = new Vector3(Player.transform.position.x, YAuMomentDuSaut, Player.transform.position.z);
@@ -38,7 +40,7 @@ public class Skate : MonoBehaviour
     public void ReparentingSkate()
     {
         print("repar");
-        if (!tempEnLair) { return; }
+        if (!tempEnLair || FailedJump == true) { return; }
         jumpingWithoutBoard = false;
         tempEnLair = false;
         transform.SetParent(Player.transform.GetChild(0));
@@ -48,7 +50,16 @@ public class Skate : MonoBehaviour
 
     IEnumerator WaitToLeaveTheGround()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(Player.GetComponent<NewPlayerController>().windupLength+0.2f);
         tempEnLair = true;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Obstacle" && tempEnLair)
+        {
+            FailedJump = true;
+            transform.SetParent(null, true);
+            Player.GetComponent<NewPlayerController>().skateFail = true;
+        }
     }
 }

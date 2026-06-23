@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c727431d0af8608489b9f542a724f842
+guid: 9f21dc7ad93b4e84699da3ee41d1f20f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9042865647797197418
-    second: spino olly windup_0
+      213: -2884081474274671709
+    second: spino 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spino olly windup_0
+      name: spino 1_0
       rect:
         serializedVersion: 2
-        x: 31
-        y: 143
-        width: 994
-        height: 635
+        x: 51
+        y: 178
+        width: 976
+        height: 590
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a6ad8804566be7d70800000000000000
-      internalID: 9042865647797197418
+      spriteID: 3a3c29efd2fa9f7d0800000000000000
+      internalID: -2884081474274671709
       vertices: []
       indices: 
       edges: []
@@ -138,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      spino olly windup_0: 9042865647797197418
+      spino 1_0: -2884081474274671709
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

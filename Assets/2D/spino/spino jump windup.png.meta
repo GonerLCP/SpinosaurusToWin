@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f8f832451a92b03428fc3809744276c7
+guid: 72f0ba1afdccc2646a74a903ad5c119e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2884081474274671709
-    second: spino 1_0
+      213: -3998657346814660296
+    second: spino jump windup_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,12 +113,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spino 1_0
+      name: spino jump windup_0
       rect:
         serializedVersion: 2
-        x: 51
+        x: 31
         y: 178
-        width: 976
+        width: 994
         height: 590
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3a3c29efd2fa9f7d0800000000000000
-      internalID: -2884081474274671709
+      spriteID: 8313b90345ae188c0800000000000000
+      internalID: -3998657346814660296
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      spino 1_0: -2884081474274671709
+      spino jump windup_0: -3998657346814660296
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
