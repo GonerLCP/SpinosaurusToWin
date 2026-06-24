@@ -63,10 +63,13 @@ public class NewPlayerController : MonoBehaviour
 
     bool rollingCLipDone;
     bool landingSoundTrigger;
+
+    bool DeathDoOnce;
     private void Start()
     {
         rollingCLipDone = true;
         landingSoundTrigger = false;
+        DeathDoOnce = true;
         spinningW.BigJumpAction += SautAvecPlanche;
         spinningW.SmallJumpAction += SautSansPlanche;
         spinningW.AccelAction += Accelleration;
@@ -176,7 +179,7 @@ public class NewPlayerController : MonoBehaviour
     {
         fail = true;
         spinningW.IsPlayerDead = true;
-        SoundFXManager.Instance.PlaySoundFXClip(deathSound, transform, .5f);
+        if (DeathDoOnce) { SoundFXManager.Instance.PlaySoundFXClip(deathSound, transform, .5f); DeathDoOnce = false; }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
