@@ -38,6 +38,8 @@ public class SpinningWheel : MonoBehaviour
     public bool IsPlayerDead;
     bool CdFinished;
     bool respinningWheelBool;
+    float respinningValue = 10;
+    bool BloquerRoue;
 
     public float WheelCooldown;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -79,7 +81,11 @@ public class SpinningWheel : MonoBehaviour
 
         if (Input.GetKeyDown("space") && IsPlayerDead == false && CdFinished ==true)
         {
-            ActualRotationValue = 0f;
+            if (BloquerRoue == true)
+            {
+                ActualRotationValue = 0f;
+            }    
+
 
             angleBetweenVectors = AngleEn360(SpinoVectorUpReference.transform.up, transform.up, Vector3.forward);
             if (angleBetweenVectors < FirstAngle)
@@ -127,7 +133,9 @@ public class SpinningWheel : MonoBehaviour
     IEnumerator RespinningWheel()
     {
         yield return new WaitForSeconds(0.2f);
-        ActualRotationValue += RotationValue *10* UnityEngine.Random.Range(-1, 2);
+        int Rand = UnityEngine.Random.Range(-1, 2);
+        if (Rand == 0) {Rand = 1;}
+        ActualRotationValue += RotationValue * respinningValue * Rand;
     }
 
     IEnumerator WheelCooldownCoroutine()
