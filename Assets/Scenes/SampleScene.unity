@@ -372,7 +372,7 @@ Transform:
   m_GameObject: {fileID: 185782597}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.9, y: 0.29, z: 0}
+  m_LocalPosition: {x: -1.1, y: -26.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -966,7 +966,7 @@ Transform:
   m_GameObject: {fileID: 500360412}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.1640003, z: 0}
+  m_LocalPosition: {x: -11.1, y: 30.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4004,6 +4004,8 @@ MonoBehaviour:
   camera: {fileID: 519420028}
   Panel: {fileID: 254065395}
   fade: {fileID: 1346476529}
+  winningCasino: {fileID: 8300000, guid: ed974fc019f8c0a4fbf83bdd1d3e71d9, type: 3}
+  Sky: {fileID: 1541938584}
 --- !u!1 &1945957768
 GameObject:
   m_ObjectHideFlags: 0

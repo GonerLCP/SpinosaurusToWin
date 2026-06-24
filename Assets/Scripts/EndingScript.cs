@@ -8,6 +8,8 @@ public class EndingScript : MonoBehaviour
     public GameObject camera;
     public GameObject Panel;
     public FadeInOut fade;
+    public AudioClip winningCasino;
+    public GameObject Sky;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,7 +27,10 @@ public class EndingScript : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            SoundFXManager.Instance.PlaySoundFXClip(winningCasino, transform, 1f);
+            player.GetComponent<AudioSource>().mute = true;
             camera.transform.SetParent(null);
+            Sky.transform.SetParent(null); //Le ciel qui bouge avec le joueur
             fade.FadeIn(true);
         }
     }

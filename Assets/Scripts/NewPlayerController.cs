@@ -179,7 +179,11 @@ public class NewPlayerController : MonoBehaviour
     {
         fail = true;
         spinningW.IsPlayerDead = true;
-        if (DeathDoOnce) { SoundFXManager.Instance.PlaySoundFXClip(deathSound, transform, .5f); DeathDoOnce = false; }
+        if (DeathDoOnce) { 
+            SoundFXManager.Instance.PlaySoundFXClip(deathSound, transform, .5f); 
+            DeathDoOnce = false; 
+            transform.GetComponent<AudioSource>().mute = true; 
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
