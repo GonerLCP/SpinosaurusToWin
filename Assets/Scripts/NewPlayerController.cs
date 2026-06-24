@@ -212,7 +212,7 @@ public class NewPlayerController : MonoBehaviour
         spriteChanger.ChangeSprite(windUpState);
         yield return new WaitForSeconds(jumpWindupLength);
         spriteChanger.ChangeSprite(JumpState);
-        verticalSpeed = bigJumpForce;
+        verticalSpeed = jumpForce;
         SoundFXManager.Instance.PlayRandomSoundFXClip(jumpSound, transform, 1f);
         yield return new WaitForSeconds(0.2f);
         stateOfThePlayer = JumpState;
