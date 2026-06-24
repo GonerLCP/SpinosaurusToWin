@@ -68,11 +68,11 @@ public class SpinningWheel : MonoBehaviour
 
         if (ActualRotationValue >= RotationDecreaseValue)
         {
-            ActualRotationValue -= RotationDecreaseValue;
+            ActualRotationValue += RotationDecreaseValue;
         }
         else if (ActualRotationValue <= -RotationDecreaseValue)
         {
-            ActualRotationValue += RotationDecreaseValue;
+            ActualRotationValue -= RotationDecreaseValue;
         }
         else {ActualRotationValue =0f; }
 
