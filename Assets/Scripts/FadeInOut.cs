@@ -2,18 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 
 public class FadeInOut : MonoBehaviour
 {
-    public CanvasGroup canvasgroup;
+    public CanvasGroup canvasGroupFail;
+    public CanvasGroup canvasGroupSuccess;
+    CanvasGroup canvasgroup;
     public bool fadein = false;
     public bool fadeout = false;
     public float TimeToFade;
+    public AudioClip Explosions;
+    bool doOnce;
     // Start is called before the first frame update
     void Start()
     {
-
+        doOnce = true;
     }
 
     // Update is called once per frame
@@ -31,12 +36,24 @@ public class FadeInOut : MonoBehaviour
             }
         }
     }
-    public void FadeIn()
+    public void FadeIn(bool IsEnding)
     {
-        fadein = true;
+        fadein = true;        
+        DoOnce(IsEnding);
     }
     public void FadeOut()
     {
         fadeout = true;
+    }
+
+    void DoOnce(bool IsEnding)
+    {
+        if (doOnce ==false)
+        {
+            return;
+        }
+        canvasgroup = IsEnding ? canvasGroupSuccess : canvasGroupFail;
+        SoundFXManager.Instance.PlaySoundFXClip(Explosions, transform, 2f);
+        doOnce = false;
     }
 }

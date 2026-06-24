@@ -42,4 +42,12 @@ public class SoundFXManager : MonoBehaviour
         Destroy(audioSource.gameObject, clipLength);
     }
 
+    public void KillAllSound()
+    {
+        GameObject[] arrayOfInstance = GameObject.FindGameObjectsWithTag("Sound");
+        for (int i = 0; i < arrayOfInstance.Length; i++)
+        {
+            Destroy(arrayOfInstance[i]);
+        }
+    }
 }

@@ -39,7 +39,8 @@ public class NewPlayerController : MonoBehaviour
     bool fail=false;
     public bool skateFail = false;
 
-    public Sprite spriteDead;
+    public GameObject spriteDead;
+    public GameObject Triangle;
     public Sprite baseSkate;
     public Sprite ollieSkate;
 
@@ -136,9 +137,13 @@ public class NewPlayerController : MonoBehaviour
         }
         else //fail, decrease de la speed + arret + afficher screen defaite
         {
-            actualSpeed -= speedDecrease; if (actualSpeed <0) {actualSpeed = 0; fade.FadeIn(); }
+            actualSpeed -= speedDecrease; if (actualSpeed <0) {actualSpeed = 0; fade.FadeIn(false); }
             transform.Translate(new Vector2(actualSpeed * Time.deltaTime * 5, verticalSpeed * Time.deltaTime), Space.World);
-            transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = spriteDead; //spriteChanger.ChangeSprite(PlayerState.Dead);
+            transform.GetChild(0).GetComponent<SpriteRenderer>().sprite =null; //spriteChanger.ChangeSprite(PlayerState.Dead);
+            spriteDead.SetActive(true);
+            //valeur trouvée par test, si on change de position un sprite il faut alors changer ça
+            spinningW.gameObject.transform.localPosition = new Vector3(-0.976000011f, 0.428000003f, 0.389999986f);
+            Triangle.gameObject.transform.localPosition = new Vector3(-1.03600001f, 1.74399996f, -0.419999987f);
         }
 
 
