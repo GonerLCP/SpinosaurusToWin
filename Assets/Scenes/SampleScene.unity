@@ -1006,8 +1006,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewPlayerController
   gravity: -35
-  bigJumpForce: 17.5
-  smallJumpForce: 15
+  bigJumpForce: 25
+  smallJumpForce: 16
   jumpWindupLength: 0.1
   speedingWindupLength: 0.15
   layerMask:
