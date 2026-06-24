@@ -34,5 +34,9 @@ public class ButtonLogicTitleScreen : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    public void QuitLetruc()
+    {
+        Application.Quit();
+    }
 
 }
