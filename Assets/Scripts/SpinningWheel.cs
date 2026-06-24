@@ -37,6 +37,7 @@ public class SpinningWheel : MonoBehaviour
 
     public bool IsPlayerDead;
     bool CdFinished;
+    bool respinningWheelBool;
 
     public float WheelCooldown;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -68,11 +69,11 @@ public class SpinningWheel : MonoBehaviour
 
         if (ActualRotationValue >= RotationDecreaseValue)
         {
-            ActualRotationValue -= RotationDecreaseValue;
+            ActualRotationValue += RotationDecreaseValue;
         }
         else if (ActualRotationValue <= -RotationDecreaseValue)
         {
-            ActualRotationValue += RotationDecreaseValue;
+            ActualRotationValue -= RotationDecreaseValue;
         }
         else {ActualRotationValue =0f; }
 
@@ -103,7 +104,10 @@ public class SpinningWheel : MonoBehaviour
                 print("3");
                 ScreamingAction?.Invoke();
             }
-            StartCoroutine(RespinningWheel());
+            if (respinningWheelBool)
+            {
+                StartCoroutine(RespinningWheel());
+            }
             StartCoroutine(WheelCooldownCoroutine());
         }
 
@@ -123,7 +127,7 @@ public class SpinningWheel : MonoBehaviour
     IEnumerator RespinningWheel()
     {
         yield return new WaitForSeconds(0.2f);
-        ActualRotationValue += RotationValue *2* UnityEngine.Random.Range(-1, 1);
+        ActualRotationValue += RotationValue *10* UnityEngine.Random.Range(-1, 2);
     }
 
     IEnumerator WheelCooldownCoroutine()
