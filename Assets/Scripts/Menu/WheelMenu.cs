@@ -1,11 +1,5 @@
-using System;
-using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
-using UnityEngine.XR;
 
 public class WheelMenu : MonoBehaviour
 {
@@ -28,6 +22,8 @@ public class WheelMenu : MonoBehaviour
     public AudioClip screamSound;
 
     AudioSource WheelAudioSource;
+
+    public GameObject CreditPanel;
 
     public float WheelCooldown;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -78,7 +74,7 @@ public class WheelMenu : MonoBehaviour
             }
             else if (angleBetweenVectors < ThirdAngle)
             {
-                SoundFXManager.Instance.PlaySoundFXClip(screamSound, transform, 0.2f);
+                CreditPanel.SetActive(true);
             }
             else
             {

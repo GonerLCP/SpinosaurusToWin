@@ -1,11 +1,10 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class EndingScript : MonoBehaviour
 {
     public GameObject player;
     public GameObject PlayeSprite;
-    public GameObject camera;
+    public GameObject cameraGameObject;
     public GameObject Panel;
     public FadeInOut fade;
     public AudioClip winningCasino;
@@ -29,7 +28,7 @@ public class EndingScript : MonoBehaviour
         {
             SoundFXManager.Instance.PlaySoundFXClip(winningCasino, transform, 1f);
             player.GetComponent<AudioSource>().mute = true;
-            camera.transform.SetParent(null);
+            cameraGameObject.transform.SetParent(null);
             Sky.transform.SetParent(null); //Le ciel qui bouge avec le joueur
             fade.FadeIn(true);
         }

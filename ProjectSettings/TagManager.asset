@@ -8,6 +8,7 @@ TagManager:
   - PlayerChild
   - Sound
   - Steroids
+  - Music
   layers:
   - Default
   - TransparentFX

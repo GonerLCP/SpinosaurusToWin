@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class ButtonLogicTitleScreen : MonoBehaviour
 {
     public GameObject ControlsPanel;
+    public GameObject BGmusic;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -41,6 +42,9 @@ public class ButtonLogicTitleScreen : MonoBehaviour
 
     public void MainMenu()
     {
+        GameObject BGmusicInstantiated = GameObject.FindGameObjectsWithTag("Music")[0];
+        Destroy(BGmusicInstantiated);
+        if (BGmusic != null) {Destroy(BGmusic);}
         SceneManager.LoadScene("TitleScreen");
     }
 
