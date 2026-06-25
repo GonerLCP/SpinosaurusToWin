@@ -51,7 +51,7 @@ public class SpinningWheel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        angleBetweenVectorsTemp = AngleEn360(SpinoVectorUpReference.transform.up,transform.up, Vector3.forward);
+        angleBetweenVectorsTemp = AngleEn360(SpinoVectorUpReference .transform.up,transform.up, Vector3.forward);
         if (Input.GetAxis("Mouse ScrollWheel") > 0f && IsPlayerDead ==false) // forward
         {
             ActualRotationValue += RotationValue;
