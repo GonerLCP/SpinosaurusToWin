@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 0ee8990b364f26d4d86b2cbe73e4cf8a
+guid: a00a2ee6f5d264042afe3472c359fed7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2606193311958461929
-    second: Max_0
+      213: -5047376152078678325
+    second: Antoine_0
+  - first:
+      213: 5398732868424314488
+    second: Antoine_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Max_0
+      name: Antoine_0
       rect:
         serializedVersion: 2
-        x: 210
-        y: 107
-        width: 1543
-        height: 1759
+        x: 138
+        y: 195
+        width: 1367
+        height: 1476
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9ed684f420f0b2420800000000000000
-      internalID: 2606193311958461929
+      spriteID: bc6829fb12e14f9b0800000000000000
+      internalID: -5047376152078678325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Antoine_1
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 156
+        width: 727
+        height: 1053
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87e28aba0f62cea40800000000000000
+      internalID: 5398732868424314488
       vertices: []
       indices: 
       edges: []
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Max_0: 2606193311958461929
+      Antoine_0: -5047376152078678325
+      Antoine_1: 5398732868424314488
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
