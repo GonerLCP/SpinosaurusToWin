@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 76e3452aea1ce0346b4c806aab92727b
+guid: 9ac051d1ad31b5b4383b45019046d7f4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6020753193528554197
-    second: Emilien_0
-  - first:
-      213: -795720993821601104
-    second: Emilien_1
+      213: -6392569741458520687
+    second: Salome_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -99,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Emilien_0
+      name: Salome_0
       rect:
         serializedVersion: 2
-        x: 54
-        y: 38
-        width: 362
-        height: 338
+        x: 1297
+        y: 786
+        width: 1838
+        height: 2671
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b2d8e6baedcf17ca0800000000000000
-      internalID: -6020753193528554197
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Emilien_1
-      rect:
-        serializedVersion: 2
-        x: 490
-        y: 40
-        width: 501
-        height: 342
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0b251f6d8f705f4f0800000000000000
-      internalID: -795720993821601104
+      spriteID: 195447e70b70947a0800000000000000
+      internalID: -6392569741458520687
       vertices: []
       indices: 
       edges: []
@@ -163,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Emilien_0: -6020753193528554197
-      Emilien_1: -795720993821601104
+      Salome_0: -6392569741458520687
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

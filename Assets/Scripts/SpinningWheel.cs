@@ -54,12 +54,12 @@ public class SpinningWheel : MonoBehaviour
         angleBetweenVectorsTemp = AngleEn360(SpinoVectorUpReference.transform.up,transform.up, Vector3.forward);
         if (Input.GetAxis("Mouse ScrollWheel") > 0f && IsPlayerDead ==false) // forward
         {
-            ActualRotationValue -= RotationValue;
+            ActualRotationValue += RotationValue;
             print("up");
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0f && IsPlayerDead == false)
         {
-            ActualRotationValue += RotationValue;
+            ActualRotationValue -= RotationValue;
             print("down");
         }
 

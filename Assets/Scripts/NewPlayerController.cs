@@ -29,6 +29,7 @@ public class NewPlayerController : MonoBehaviour
     public float actualSpeed;
     public float speedIncrease;
     public float speedDecrease;
+    public float speedDecreaseDeath;
 
     public SpinningWheel spinningW;
 
@@ -145,7 +146,7 @@ public class NewPlayerController : MonoBehaviour
         }
         else //fail, decrease de la speed + arret + afficher screen defaite
         {
-            actualSpeed -= speedDecrease*5; if (actualSpeed <0) {actualSpeed = 0; fade.FadeIn(false); }
+            actualSpeed -= speedDecrease* speedDecreaseDeath; if (actualSpeed <0) {actualSpeed = 0; fade.FadeIn(false); }
             transform.Translate(new Vector2(actualSpeed * Time.deltaTime * 5, verticalSpeed * Time.deltaTime), Space.World);
             transform.GetChild(0).GetComponent<SpriteRenderer>().sprite =null; //spriteChanger.ChangeSprite(PlayerState.Dead);
             spriteDead.SetActive(true);
