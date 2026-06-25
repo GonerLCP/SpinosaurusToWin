@@ -107,7 +107,9 @@ public class NewPlayerController : MonoBehaviour
         else
         {
             playerAudioSource.Stop();
-            StopCoroutine(coroutineRolling);
+            if (coroutineRolling != null){
+                StopCoroutine(coroutineRolling);
+            }
             rollingCLipDone = true;
             landingSoundTrigger = true;
         }
