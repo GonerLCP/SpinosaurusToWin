@@ -3,10 +3,11 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using UnityEngine.XR;
 
-public class SpinningWheel : MonoBehaviour
+public class WheelMenu : MonoBehaviour
 {
     Transform Wheeltransform;
     public float RotationValue;
@@ -21,25 +22,12 @@ public class SpinningWheel : MonoBehaviour
     public float angleBetweenVectors;
     public float angleBetweenVectorsTemp;
 
-    public event Action BigJumpAction;
-    public event Action SmallJumpAction;
-    public event Action AccelAction;
-    public event Action ScreamingAction;
 
     public GameObject SpinoVectorUpReference;
 
     public AudioClip screamSound;
-    public AudioClip wheelSound;
 
     AudioSource WheelAudioSource;
-
-    public SpriteChanger spriteChanger;
-
-    public bool IsPlayerDead;
-    bool CdFinished;
-    public bool respinningWheelBool;
-    public float respinningValue = 10;
-    public bool BloquerRoue;
 
     public float WheelCooldown;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -47,21 +35,18 @@ public class SpinningWheel : MonoBehaviour
     {
         Wheeltransform = GetComponent<Transform>();
         WheelAudioSource = GetComponent<AudioSource>();
-        WheelAudioSource.clip = wheelSound;
-        IsPlayerDead = false;
-        CdFinished = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         angleBetweenVectorsTemp = AngleEn360(SpinoVectorUpReference.transform.up,transform.up, Vector3.forward);
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f && IsPlayerDead ==false) // forward
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
         {
             ActualRotationValue -= RotationValue;
             print("up");
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0f && IsPlayerDead == false)
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
             ActualRotationValue += RotationValue;
             print("down");
@@ -79,42 +64,26 @@ public class SpinningWheel : MonoBehaviour
         }
         else {ActualRotationValue =0f; }
 
-        if (Input.GetKeyDown("space") && IsPlayerDead == false && CdFinished ==true)
+        if (Input.GetKeyDown("space"))
         {
-            if (BloquerRoue == true)
-            {
-                ActualRotationValue = 0f;
-            }    
-
-
+            ActualRotationValue = 0f;
             angleBetweenVectors = AngleEn360(SpinoVectorUpReference.transform.up, transform.up, Vector3.forward);
-            if (angleBetweenVectors < FirstAngle)
+            if (angleBetweenVectors < FirstAngle || angleBetweenVectors>FourthAngle)
             {
-                print("1");
-                BigJumpAction?.Invoke();
+                SoundFXManager.Instance.PlaySoundFXClip(screamSound, transform, 0.2f);
             }
             else if (angleBetweenVectors  < SecondAngle)
             {
-                print("zebi ça marche");
-                AccelAction?.Invoke();
+                Application.Quit();
             }
             else if (angleBetweenVectors < ThirdAngle)
             {
-                print("2");
-                SmallJumpAction?.Invoke();
+                SoundFXManager.Instance.PlaySoundFXClip(screamSound, transform, 0.2f);
             }
             else
             {
-                SoundFXManager.Instance.PlaySoundFXClip(screamSound, transform,0.2f);
-                StartCoroutine(ScreamingChangeSprite());
-                print("3");
-                ScreamingAction?.Invoke();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
-            if (respinningWheelBool)
-            {
-                StartCoroutine(RespinningWheel());
-            }
-            StartCoroutine(WheelCooldownCoroutine());
         }
 
         if (Mathf.Abs(ActualRotationValue) >0)
@@ -130,27 +99,6 @@ public class SpinningWheel : MonoBehaviour
         }
     }
 
-    IEnumerator RespinningWheel()
-    {
-        yield return new WaitForSeconds(0.2f);
-        int Rand = UnityEngine.Random.Range(-1, 2);
-        if (Rand == 0) {Rand = 1;}
-        ActualRotationValue += RotationValue * respinningValue * Rand;
-    }
-
-    IEnumerator WheelCooldownCoroutine()
-    {
-        CdFinished = false;
-        yield return new WaitForSeconds(WheelCooldown);
-        CdFinished = true;
-    }
-
-    IEnumerator ScreamingChangeSprite()
-    {
-        spriteChanger.ChangeSprite(PlayerState.Screaming);
-        yield return new WaitForSeconds(1.5f);
-        spriteChanger.ChangeSprite(PlayerState.BaseSpinoWoSkate);
-    }
     private float AngleEn360(Vector3 from,Vector3 to, Vector3 direction)
     {
         float angleSigned = Vector3.SignedAngle(from, to, direction);
@@ -162,19 +110,14 @@ public class SpinningWheel : MonoBehaviour
     }
     private void OnDrawGizmosSelected()
     {
-        //Gizmos.color = Color.orange;
-        //Gizmos.DrawRay(SpinoVectorUpReference.transform.position, SpinoVectorUpReference.transform.up.normalized);
-
-        //Gizmos.color = Color.blue;
-        //Gizmos.DrawRay(transform.position, Vector3.up * 5f);
-        Vector3 VectorUpRefWheel = transform.up - transform.position;
         Gizmos.color = Color.orange;
         Gizmos.DrawRay(transform.position, Quaternion.Euler(0, 0, -FirstAngle) * Vector3.up * 5f);
         Gizmos.color = Color.purple;
         Gizmos.DrawRay(transform.position, Quaternion.Euler(0, 0, -SecondAngle) * Vector3.up * 5f);
         Gizmos.color = Color.pink;
         Gizmos.DrawRay(transform.position, Quaternion.Euler(0, 0, -ThirdAngle) * Vector3.up * 5f);
-
-
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(transform.position, Quaternion.Euler(0, 0, -FourthAngle) * Vector3.up * 5f);
     }
+
     }
