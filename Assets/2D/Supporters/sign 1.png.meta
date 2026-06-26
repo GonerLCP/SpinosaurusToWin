@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: f01ed2f6534c25047b61f35c5dd899b5
+guid: 86cc77b4e14e9064980c5e2eccfca94e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4084535269253580874
-    second: Myriam_0
-  - first:
-      213: 2565148091829600708
-    second: Myriam_1
+      213: -4404581452801358691
+    second: sign 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Myriam_0
+      name: sign 1_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 504
-        width: 1549
-        height: 1417
+        x: 0
+        y: 0
+        width: 1080
+        height: 1034
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6b7f59b30d0d057c0800000000000000
-      internalID: -4084535269253580874
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Myriam_1
-      rect:
-        serializedVersion: 2
-        x: 1528
-        y: 267
-        width: 10
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4c146c9499c399320800000000000000
-      internalID: 2565148091829600708
+      spriteID: d9440815188cfd2c0800000000000000
+      internalID: -4404581452801358691
       vertices: []
       indices: 
       edges: []
@@ -163,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Myriam_0: -4084535269253580874
-      Myriam_1: 2565148091829600708
+      sign 1_0: -4404581452801358691
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
