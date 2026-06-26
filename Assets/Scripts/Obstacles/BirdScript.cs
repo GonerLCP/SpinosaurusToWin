@@ -43,6 +43,7 @@ public class BirdScript : MonoBehaviour
         {
             SoundFXManager.Instance.PlaySoundFXClip(BirdScream, transform, 0.2f);
             transform.GetComponent<BoxCollider2D>().enabled = false;
+            if (transform.GetChild(0)!= null) { transform.GetChild(0).transform.parent = null; }
             StartCoroutine(AnimationFlyingBird());
         }
     }
